@@ -1,0 +1,3 @@
+<p>Dear ${name},</p><br> 
+
+<p>The assignment "<b>${assignment}</b>" posted by <b>${by}</b> to the course <b>${to}</b> has been deleted.

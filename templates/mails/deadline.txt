@@ -1,0 +1,5 @@
+<p>Dear ${name},</p><br> 
+
+<p>The deadline for the assignment "<b>${assignment}</b>" posted by <b>${by}</b> to the course <b>${to}</b> is approaching.</p>
+<p>The deadline is on <b>${dead}</b>.</p>
+<p><a href="${url}">Click here</a> to submit/resubmit your assignment.</p>

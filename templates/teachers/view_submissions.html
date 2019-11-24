@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.10.5, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.5, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="{{ url_for('static', filename = 'images/c-fakepath-screen-shot-2019-06-29-at-7.24.47-pm-2-128x103.png') }}" type="image/x-icon">
+  <meta name="description" content="">
+  
+  <title>view sub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'tether/tether.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-grid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-reboot.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'datatables/data-tables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'theme/css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'mobirise/css/sub_mbr-additional.css') }}" type="text/css">
+  <style type="text/css">
+  	#DataTables_Table_0_info {
+  		color : #f9f9f9;;
+  	}
+  	select{
+  		 border-radius: 10%;
+  		 font-variant: sans-serif;
+  		 color: #3C3737;
+  		 font-size: 20px;
+ 
+  	}
+  	option{
+  		background-color: #D7D4D0;
+  	}
+  	/*button{
+  		background-color: white;
+  		border: 0px;
+  	}
+  	button:focus{
+  		outline: 0;
+  		background-color: white;
+  		border: 0px;
+  	}
+  	button:hover{
+  		cursor: pointer;
+  	}*/
+    .marks:focus{
+      outline:0;
+    }
+  </style>
+  
+  
+  
+</head>
+<body>
+  {% include 'teachers/menu.html' %}
+  <section class="section-table cid-ruAHeohO9I" id="table1-5">
+
+  
+  
+  <div class="container container-table">
+      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+          Submissions<br> {{heading}}</h2>
+      <p class="align-center">The max marks for this assignment is {{max_marks}}</p>
+   <!--    <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5">
+      	Course Code : &nbsp 
+      	<select>
+  	<option value="Sem 1">UE16CS315</option>
+  	<option value="Sem 2">UE16CS257</option>
+	</select>
+	/h3>
+      	
+      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"<br >Assignment : &nbsp 
+      	<select>
+  	<option value="ISA 2"> 1</option>
+  	<option value="Assignments">2</option>
+ 	 	</select></h3> -->
+   
+    </div>
+
+      <div class="table-wrapper">
+        <div class="container">
+          <div class="row search">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="dataTables_filter">
+                  <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                  <input class="form-control input-sm" disabled="">
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container scroll">
+          <table class="table isSearch" cellspacing="0">
+            <thead>
+              <tr class="table-heads ">
+                  
+                  
+                  
+                  
+              <th class="head-item mbr-fonts-style display-7">
+                      USN</th><th class="head-item mbr-fonts-style display-7">DESCRIPTION</th><th class="head-item mbr-fonts-style display-7">SUBMISSON</th><th class="head-item mbr-fonts-style display-7">UPDATE MARKS</th></tr>
+            </thead>
+
+            <tbody>
+              
+              
+              
+             <!-- [{'files': {'templates': '/getfile/96d3212b-9f25-48c5-b13d-2625926ed801/d63402f4-a5f0-45f1-a332-f8c384fd0d7e/templates.zip', 'app.py': '/getfile/96d3212b-9f25-48c5-b13d-2625926ed801/d63402f4-a5f0-45f1-a332-f8c384fd0d7e/app.py'}, 
+              'student_id': 'd63402f4-a5f0-45f1-a332-f8c384fd0d7e', 
+              'submission_id': '9bd7dab6-7f07-4976-8714-5cfb969f8482', 
+              'description': 'Please find attached file.', 
+              'student_name': 'Lavanya', 
+              'submitted': 1, 
+              'marks': 0}, 
+              ] -->
+            {%for sub in passer%}
+            <tr>          
+              <td class="body-item mbr-fonts-style display-7">{{sub['student_name']}}</td><td class="body-item mbr-fonts-style display-7">{{sub['description']}}</td><td class="body-item mbr-fonts-style display-7">
+              	<ul style="margin-bottom:0px;">
+                  {%for disp,url in sub['files'].items()%}
+                    <li><a href="{{url}}">{{disp}}</a></li>
+                  {%endfor%}
+                </ul>
+              </td>
+              <td class="body-item mbr-fonts-style display-7 align-center" ><input type="number" name="{{sub['submission_id']}}" id="{{sub['student_id']}}" class="display-7 marks" min="0" max="{{max_marks}}" value="{{sub['marks']}}" onchange="checkandupdate(this)">
+                
+              </td>
+            </tr>
+            {%endfor%}
+            </tbody>
+          </table>
+        </div>
+        <div class="container table-info-container">
+          <div class="row info">
+            <div class="col-md-6">
+              <div class="dataTables_info mbr-fonts-style display-7" >
+              </div>
+            </div>
+            <div class="col-md-6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <button type="button"style="float: right;margin-right:25%">Save Changes</button><span style="visibility:hidden;">&#10003;</span>  -->
+</section>
+  <!--section class="engine"><a href="https://mobirise.info/v">free html templates</a></section--><script src="{{ url_for('static', filename = 'web/assets/jquery/jquery.min.js') }}"></script>
+  <script>
+function loadXMLDoc(values) {
+  // alert(values['marks']);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      parentob.nextSibling.style.visibility = "visible";
+      console.log(this.responseText)
+    }
+  };
+  xhttp.open("POST", "/PES/teacher/{{id}}/updatemarks/{{aid}}", true);
+  xhttp.setRequestHeader("content-type", "application/json")
+  xhttp.send(JSON.stringify(values));
+}
+
+function checkandupdate(ob){
+  // console.log(ob.id);
+  // console.log(ob.name);
+  // console.log(ob.value);
+  if(ob.value<0 || ob.value>{{max_marks}}){
+    alert("Please enter valid marks. "+ob.value+" is not within 0 and {{max_marks}}");
+  }
+  else{
+    var temp={'student_id':ob.id,'submission_id':ob.name,'marks':ob.value,'assignment_id':"{{aid}}"};
+    loadXMLDoc(temp);
+  }
+}
+</script>
+  <script src="{{ url_for('static', filename = 'popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'tether/tether.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'datatables/jquery.data-tables.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'datatables/data-tables.bootstrap4.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'theme/js/script.js') }}"></script>
+  
+  
+ <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
+  </body>
+</html>

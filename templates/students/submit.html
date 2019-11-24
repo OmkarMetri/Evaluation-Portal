@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.10.5, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.5, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="{{ url_for('static', filename = 'images/logo4.png') }}" type="image/x-icon">
+  <meta name="description" content="">
+  
+  <title>submit</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'tether/tether.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-grid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-reboot.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'theme/css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'mobirise/css/submit_mbr-additional.css') }}" type="text/css">
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+ 
+  <style type="text/css">
+    select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+}
+  </style>
+  
+  
+</head>
+<body>
+ {% include 'students/menu.html' %}
+  <section class="mbr-section form1 cid-ruNnYKGysv" id="form1-k">
+
+    
+
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                    SUBMIT ASSIGNMENT</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="media-container-column col-lg-8" data-form-type="formoid">
+                <!---Formbuilder Form--->
+                <form action="/PES/student/{{id}}/assignment/{{arg['assignment_id']}}/submit" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data" id="satya">
+                    <div class="row">
+                        
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                        </div>
+                    </div>
+                    <div  class="dragArea row">
+                        <div data-for="message" class="col-md-12 form-group">
+                            <label for="message-form1-k" class="form-control-label mbr-fonts-style display-7">Description</label>
+                            <textarea name="description" data-form-field="Message" class="form-control display-7" id="message-form1-k" required="required"></textarea>
+                        </div>
+                        {%for fi in arg['submission_files']%}
+                        <div data-for="message" class="col-md-6 form-group">
+                            <label for="file" class="form-control-label mbr-fonts-style display-7">{{fi}} </label>
+                            <input type="file" name="{{fi}}" data-form-field="File" class="form-control display-7" id="file-form1-k" required="required">
+                        </div>
+                        {%endfor%}
+                        <div class="col-md-12 input-group-btn align-center">
+                            <button type="submit" class="btn btn-primary btn-form display-4" form="satya">SUMBIT</button>
+                        </div>
+                    </div>
+                </form><!---Formbuilder Form--->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <section class="engine"><a href="https://mobirise.info/i">free website creation software</a></section><script src="{{ url_for('static', filename = 'web/assets/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'tether/tether.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'theme/js/script.js') }}"></script>
+       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   
+  
+ <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
+  </body>
+</html>

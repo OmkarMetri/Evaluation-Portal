@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.10.5, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.5, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="{{ url_for('static', filename = 'images/logo4.png" type="image/x-icon') }}">
+  <meta name="description" content="">
+  
+  <title>upload</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'tether/tether.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-grid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-reboot.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'theme/css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'mobirise/css/up_mbr-additional.css') }}" type="text/css">
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+ 
+  <style type="text/css">
+    select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+}
+  </style>
+  
+  
+</head>
+<body>
+{% include 'teachers/menu.html' %}
+  <section class="mbr-section form1 cid-ruNnYKGysv" id="form1-k">
+
+    
+
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                    UPLOAD AN ASSIGNMENT</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="media-container-column col-lg-8" data-form-type="formoid">
+                <!---Formbuilder Form--->
+                <form action="/PES/teacher/{{id}}/upload" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
+                    <div class="row">
+                        
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                        </div>
+                    </div>
+
+                    <div  class="dragArea row">
+
+                        <div class="col-md-12  form-group" data-for="type">
+                          <input type="radio" name="type" value="1" checked> Online &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="radio" name="type" value="0"> Offline<br>
+                        </div>
+                        <div class="col-md-12  form-group" data-for="name">
+                            <label for="name-form1-k" class="form-control-label mbr-fonts-style display-7">Title of the Assignment</label>
+                            <input type="text" name="name" data-form-field="Name" required="required" class="form-control display-7" id="name-form1-k">
+                        </div>
+                        <div class="col-md-6  form-group" data-for="datetime">
+                            <label for="datetime-form1-k" class="form-control-label mbr-fonts-style display-7">Deadline</label>
+                            <input type="datetime-local"  required="required" class="form-control display-7" name="datetime">
+                        </div>
+                        <div data-for="number" class="col-md-6 form-group">
+                            <label for="phone-form1-k" class="form-control-label mbr-fonts-style display-7">Max Marks</label>
+                            <input type="number" name="number" data-form-field="Number" class="form-control display-7" id="number-form1-k" required>
+                        </div>
+                        <div class="col-md-6  form-group" data-for="name">
+                            <label for="select-form1-k" class="form-control-label mbr-fonts-style display-7">Course ID</label>
+                            <select class="form-control display-7" name="select-form1-k">
+                              {%for val in course%} 
+                              <option value="{{val[1]}}">{{val[0]}}</option>
+                              {%endfor%}
+                            </select>
+                        </div>
+                        <div data-for="message" class="col-md-6 form-group">
+                            <label for="file" class="form-control-label mbr-fonts-style display-7">Attach Files</label>
+                            <input type="file" name="file" data-form-field="File" class="form-control display-7" id="file-form1-k" multiple>
+                        </div>
+                        <div data-for="message" class="col-md-12 form-group">
+                            <label for="message-form1-k" class="form-control-label mbr-fonts-style display-7">Description</label>
+                            <textarea name="message" data-form-field="Message" class="form-control display-7" id="message-form1-k"></textarea>
+                        </div>
+                        <div data-for="message" class="col-md-12 form-group">
+                            Add what files are expected to be submitted by the students : &nbsp;&nbsp;&nbsp;<br>
+                          <button type="button" name="add_files" id="somebutton" class="btn btn-light display-8" style="padding: 2px 5px 2px 5px; ">Add</button></div>
+                        <div data-for="message" class="col-md-6 form-group">
+                        <ul id="container_satya"></ul></div>
+                        <div class="col-md-12 input-group-btn align-center">
+                            <button type="submit" class="btn btn-primary btn-form display-4">POST ASSIGNMENT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="{{ url_for('static', filename = 'web/assets/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'jquery-3.4.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'tether/tether.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'theme/js/script.js') }}"></script>
+       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   <script type="text/javascript" id="script">
+      var a=0;
+      function myfunction(e){
+        //alert($(e).attr('id'));
+    $(e).parent().remove();
+   };
+     $("#somebutton").click(function () {
+  $("#container_satya").append('<li id="li'+(++a)+'"><input type="text" name="name[]" data-form-field="Name" required="required" class="form-control display-7" id="name-form2-k" style="width: 80%;display:inline;" >&nbsp;&nbsp;<button type="button" id="b'+a+'" style="background-color:transparent;border-color:transparent;outline:none;" onclick="myfunction(this)">&#10006;</button><br>&nbsp;</li>');
+   
+});
+
+   </script>
+  
+ <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
+  </body>
+</html>

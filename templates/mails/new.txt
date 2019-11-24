@@ -1,0 +1,6 @@
+<p>Dear ${name},</p><br> 
+
+<p>A new assignment "<b>${assignment}</b>" has been posted by <b>${by}</b> to the course <b>${to}</b>.</p>
+<a href="${url}">Click here</a> to know more details  
+
+<p>All the Best!</p>

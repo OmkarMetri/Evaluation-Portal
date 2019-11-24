@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.10.5, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.5, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="{{ url_for('static', filename = 'images/c-fakepath-screen-shot-2019-06-29-at-7.24.47-pm-2-128x103.png') }}" type="image/x-icon">
+  <meta name="description" content="">
+  
+  <title>view_assign_teach</title>
+  <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"-->
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'tether/tether.min.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-grid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap/css/bootstrap-reboot.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'theme/css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'mobirise/css/mbr-additional.css') }}" type="text/css">
+
+  <style type="text/css">
+    .line{
+  border: 1px solid grey;
+  outline: 2px solid blue;
+}
+  </style>
+  
+  
+</head>
+<body>
+{% include 'teachers/menu.html' %}
+  <section class="mbr-section content4 cid-rv4NQuBGH2" id="content4-m">
+
+    
+                
+    <div class="container ">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8 ">
+                <h2 class="align-center pb-3 mbr-fonts-style display-2">
+                    {{ arg['heading'] }}
+                
+                </h2>
+                <h3 class="mbr-section-subtitle mbr-light mbr-fonts-style display-5">&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- float: left; position: relative; ;right: 150px; -->
+                <table>
+                  <tr>
+                    <td style="text-align: right;">Posted By</td>
+                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                    <td style="text-align: left;">{{ arg['professor'] }}</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: right;">Posted On</td>
+                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                    <td style="text-align: left;">{{ arg['posted_on'] }}</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: right;">Max Marks</td>
+                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                    <td style="text-align: left;">{{ arg['max_marks'] }}</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: right;">Course</td>
+                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                    <td style="text-align: left;">{{ arg['course'] }}</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: right;">Deadline</td>
+                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                    <td style="text-align: left;">{{ arg['deadline'] }}</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: right;">Mode of Submission</td>
+                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                    <td style="text-align: left;">
+                      {% if arg['online']%}
+                        Online
+                      {% else %}
+                        Offline
+                      {% endif %} 
+                    </td>
+                  </tr>
+
+                </table><br>
+                <div >Description : </div><div style="margin-left: 50px" class="display-4">{{ arg['description'] }}</div><br>
+                      <div>Files Attached : 
+                      <ul style="margin-left: 50px">
+                        {%for file in arg['files']%} 
+                          <li><a href="/getfile/{{arg['assignment_id']}}/{{file}}">{{file}}</a></li>
+                        {%endfor%} 
+                      </ul></div>
+                </h3>
+            </div>
+        </div>
+            <form action="/PES/teacher/{{ id }}/submissions/{{ arg['assignment_id'] }}" method="GET" id="up"><button type="submit" class="btn btn-primary display-4"  style="float: right;" form="up">Update Marks</button></form>
+        <form action="/PES/teacher/{{ id }}/delete-assignment/{{ arg['assignment_id'] }}" method="DELETE" id="del1" onsubmit="return confirm('Do you really want to delete the assignment?Doing so, the assignment would no longer be available to students');">
+        <button type="submit" class="btn btn-dark display-4" form="del1">Delete Post</button></form>
+      </div>
+
+</section>
+
+  <script src="{{ url_for('static', filename = 'web/assets/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'tether/tether.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'theme/js/script.js') }}"></script>
+  
+  
+ <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
+  </body>
+</html>
