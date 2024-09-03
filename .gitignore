@@ -1,0 +1,8 @@
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore macOS Finder metadata files
+.DS_Store
+
+# Ignore JetBrains IDE configuration directory
+.idea/
