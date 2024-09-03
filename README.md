@@ -6,5 +6,11 @@
 3. Student view supports assignment view, submission of the files, delete the submission and re-submit.
 
 ## Execution commands
-$ python db.py </br>
-$ python app.py 
+Step 1: Populate the database
+```
+python db.py
+```
+Step 2: Deploy the web application
+```
+python app.py 
+```
