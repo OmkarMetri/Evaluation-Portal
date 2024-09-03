@@ -132,7 +132,3 @@ def Deadline(emails, by, to, url, assignment, deadline):
 
         s.quit()
 
-
-# NewAssignment([["satya","satyabhamareddy@gmail.com"],["parvathi","parvatig@gmail.com"]],"teacher","course","www.google.com","Name")
-# DeleteAssignment([["satya","satyabhamareddy@gmail.com"],["parvathi","parvatig@gmail.com"]],"teacher","course","Name")
-# Deadline([["satya","satyabhamareddy@gmail.com"],["parvathi","parvatig@gmail.com"]],"teacher","course","www.google.com","Name","23-08-2019 21:00:00")
